@@ -4,6 +4,7 @@ import path from "path";
 import compression from "compression";
 import livereload from "livereload";
 import connectLivereload from "connect-livereload";
+import ejsMate from "ejs-mate";
 
 import logger from "./config/utils/pino";
 import { corsOptions } from "./config/utils/cors";
@@ -23,6 +24,7 @@ liveReloadServer.watch(path.join(__dirname, "../public"));
 app.use(connectLivereload());
 
 app.use(express.static(path.join(__dirname, "../public")));
+app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "./views"));
 
