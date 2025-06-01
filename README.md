@@ -1,13 +1,12 @@
 # Integrantes
 - Patrick Sandro Durand Alejos
 - Caleb Matias Condor Carrera
-- Giacomo Gilardino
+- Giacomo Giordano Gilardino 
 
 # Instalar dependencias
 - bun i
 
-# Ejecutar en conjunto:
-- bun run build:css
+# Ejecutar en modo desarrollo
 - bun run dev
 
 # Hacer el build

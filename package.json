@@ -9,6 +9,7 @@
     "@types/bun": "latest",
     "@typescript-eslint/eslint-plugin": "^8.33.0",
     "@typescript-eslint/parser": "^8.33.0",
+    "concurrently": "^9.1.2",
     "eslint": "^9.28.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.4.1",
@@ -21,7 +22,8 @@
     "typescript": "^5"
   },
   "scripts": {
-    "dev": "bun run --hot --watch src/server.ts",
+    "dev": "concurrently \"bun run dev:server\" \"bun run build:css\"",
+    "dev:server": "bun run --hot --watch src/server.ts",
     "build": "bun run build.ts",
     "start": "bun run dist/server.js",
     "test": "bun test",
