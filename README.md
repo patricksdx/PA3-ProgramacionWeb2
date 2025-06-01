@@ -1,15 +1,17 @@
-# pa3
+# Integrantes
+- Patrick Sandro Durand Alejos
 
-To install dependencies:
+# Instalar dependencias
+- bun i
 
-```bash
-bun install
-```
+# Ejecutar en conjunto:
+- bun run build:css
+- bun run dev
 
-To run:
+# Hacer el build
+- bun run build
 
-```bash
-bun run index.ts
-```
+# Ejecutar en producción
+- bun run start
 
-This project was created using `bun init` in bun v1.2.12. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+# Cualquier Pregunta al Whattsapp

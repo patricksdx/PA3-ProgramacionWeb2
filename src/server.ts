@@ -27,10 +27,16 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "./views"));
 
 app.get("/", (req, res) => {
-  res.render("index", { mensaje: "Hola desde EJS con TypeScript y Bun!" });
+  res.render("index", {
+    mensaje: "Hola desde EJS con TypeScript y Bun!",
+    title: "Inicio",
+  });
 });
 app.get("/contact", (req, res) => {
-  res.render("contact", { mensaje: "Welcome to jurassic world a" });
+  res.render("contact", {
+    mensaje: "Welcome to jurassic world a",
+    title: "Contacto",
+  });
 });
 
 liveReloadServer.server.on("change", () => {
