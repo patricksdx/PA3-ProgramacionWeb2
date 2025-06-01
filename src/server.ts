@@ -41,6 +41,12 @@ app.get("/contact", (req, res) => {
   });
 });
 
+app.use((req, res) => {
+  res.status(404).render("404", {
+    title: "Página no encontrada",
+  });
+});
+
 liveReloadServer.server.on("change", () => {
   liveReloadServer.refresh("/");
 });
