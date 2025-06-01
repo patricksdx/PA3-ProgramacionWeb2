@@ -1,5 +1,7 @@
 # Integrantes
 - Patrick Sandro Durand Alejos
+- Caleb Matias Condor Carrera
+- Giacomo Gilardino
 
 # Instalar dependencias
 - bun i

@@ -28,7 +28,7 @@ app.set("views", path.join(__dirname, "./views"));
 
 app.get("/", (req, res) => {
   res.render("index", {
-    mensaje: "Hola desde EJS con TypeScript y Bun!",
+    mensaje: "Inicio EJS con TypeScript y Bun!",
     title: "Inicio",
   });
 });
