@@ -34,9 +34,9 @@ app.get("/", (req, res) => {
     title: "Inicio",
   });
 });
-app.get("/contact", (req, res) => {
-  res.render("contact", {
-    mensaje: "Welcome to jurassic world a",
+app.get("/contacto", (req, res) => {
+  res.render("contacto", {
+    mensaje: "Welcome to jurassic world",
     title: "Contacto",
   });
 });
