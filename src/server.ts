@@ -40,6 +40,12 @@ app.get("/contact", (req, res) => {
     title: "Contacto",
   });
 });
+app.get("/lugares", (req, res) => {
+  res.render("lugares", {
+    mensaje: "Welcome to jurassic world a",
+    title: "Lugares",
+  });
+});
 
 app.use((req, res) => {
   res.status(404).render("404", {

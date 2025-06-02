@@ -5,20 +5,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>
-        <%= title || 'Mi App con Tailwind' %>
+        <%= title %>
     </title>
     <link rel="shortcut icon" href="/malena.jpg" type="image/x-icon">
     <link href="/css/tailwind.css" rel="stylesheet" />
 </head>
 
 <body class="font-poppins">
-    <%- include('../partials/header') %>
 
-        <main class="p-6">
+    <main>
+        <%- include('../partials/header') %>
+
             <%- body %>
-        </main>
 
-        <%- include('../partials/footer') %>
+                <%- include('../partials/footer') %>
+
+    </main>
 </body>
 
 </html>
