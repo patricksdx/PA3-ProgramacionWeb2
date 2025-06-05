@@ -1,40 +1,124 @@
 <% layout('layouts/layout') %>
 
-<section class="max-w-2xl mx-auto p-6 bg-white shadow rounded">
-  <h2 class="text-4xl font-bold mb-6 text-center mt-20" style="color: #7B081A;">Contáctanos</h2>
-  
-  <form id="formContacto" action="/contacto" method="POST" class="space-y-4">
-    
-    <!-- Nombre -->
-    <div>
-      <label class="block text-sm font-medium">Nombre</label>
-      <input id="nombre" name="nombre" required class="w-full p-2 border rounded focus:outline-none focus:ring focus:border-red-500" />
+<section class="w-full py-16 flex flex-col pt-10 items-center bg-gray-50">
+  <h2 class="text-3xl font-bold text-center pt-10 mt-10 text-gray-800 mb-10">Lo que dicen nuestros clientes</h2>
+
+  <div 
+    id="carousel-container"
+    class="w-[80%] overflow-hidden select-none"
+    onmousedown="startDrag(event)" 
+    onmouseup="stopDrag()" 
+    onmouseleave="stopDrag()" 
+    onmousemove="onDrag(event)"
+  >
+    <div 
+      id="carousel" 
+      class="flex gap-6 overflow-x-scroll scroll-smooth"
+      style="scroll-behavior: smooth; -ms-overflow-style: none; scrollbar-width: none;"
+    >
+      <!-- Comentario 1 -->
+      <div class="flex-shrink-0 w-[25%] bg-white rounded-xl shadow p-6 flex flex-col items-center">
+        <img src="/ruta/avatar1.jpg" class="w-16 h-16 rounded-full object-cover mb-3" alt="">
+        <h3 class="font-semibold text-gray-800">Andrea Martínez</h3>
+        <p class="text-sm text-gray-600 mt-2 text-center">“Todo fue perfecto. Se encargaron de cada detalle. ¡Gracias!”</p>
+      </div>
+      <!-- Comentario 2 -->
+      <div class="flex-shrink-0 w-[25%] bg-white rounded-xl shadow p-6 flex flex-col items-center">
+        <img src="/ruta/avatar2.jpg" class="w-16 h-16 rounded-full object-cover mb-3" alt="">
+        <h3 class="font-semibold text-gray-800">Juan Torres</h3>
+        <p class="text-sm text-gray-600 mt-2 text-center">“Muy profesionales. Superaron mis expectativas.”</p>
+      </div>
+      <!-- Comentario 3 -->
+      <div class="flex-shrink-0 w-[25%] bg-white rounded-xl shadow p-6 flex flex-col items-center">
+        <img src="/ruta/avatar3.jpg" class="w-16 h-16 rounded-full object-cover mb-3" alt="">
+        <h3 class="font-semibold text-gray-800">Lucía Gómez</h3>
+        <p class="text-sm text-gray-600 mt-2 text-center">“Gracias por hacer nuestro día tan especial.”</p>
+      </div>
+      <!-- Comentario 4 -->
+      <div class="flex-shrink-0 w-[25%] bg-white rounded-xl shadow p-6 flex flex-col items-center">
+        <img src="/ruta/avatar4.jpg" class="w-16 h-16 rounded-full object-cover mb-3" alt="">
+        <h3 class="font-semibold text-gray-800">Carlos Méndez</h3>
+        <p class="text-sm text-gray-600 mt-2 text-center">“Atención excelente y trato muy humano.”</p>
+      </div>
+      <!-- Comentario 5 -->
+      <div class="flex-shrink-0 w-[25%] bg-white rounded-xl shadow p-6 flex flex-col items-center">
+        <img src="/ruta/avatar5.jpg" class="w-16 h-16 rounded-full object-cover mb-3" alt="">
+        <h3 class="font-semibold text-gray-800">Sofía Rivas</h3>
+        <p class="text-sm text-gray-600 mt-2 text-center">“Volvería a contratarlos sin dudarlo.”</p>
+      </div>
     </div>
-    
-    <!-- Correo -->
-    <div>
-      <label class="block text-sm font-medium">Correo</label>
-      <input id="correo" type="email" name="correo" required class="w-full p-2 border rounded focus:outline-none focus:ring focus:border-red-500" />
-      <p id="errorCorreo" class="text-sm text-red-500 mt-1 hidden">Correo inválido</p>
-    </div>
-    
-    <!-- Mensaje -->
-    <div>
-      <label class="block text-sm font-medium">Mensaje</label>
-      <textarea name="mensaje" rows="4" required class="w-full p-2 border rounded focus:outline-none focus:ring focus:border-red-500"></textarea>
-    </div>
-    
-    <!-- Botón + estado -->
-    <div class="flex items-center gap-4">
-      <button id="btnEnviar" type="submit" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700" style="background-color: #7B081A;">
-        Enviar
-      </button>
-      <p id="estadoEnvio" class="text-sm text-gray-500 hidden">Enviando...</p>
-    </div>
-  </form>
+  </div>
 </section>
 
-<!-- Script JS para validación + indicador de carga -->
+<!-- Oculta scrollbar en navegadores WebKit (Chrome/Safari) -->
+<style>
+  #carousel::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+<section class="w-full mt-10">
+  <div class="grid grid-cols-1 md:grid-cols-2 h-full w-full">
+    <!-- Izquierda: Texto con padding interno -->
+    <div class="bg-[#7B081A] text-white flex items-center justify-center px-10 py-20">
+      <div class="max-w-md">
+        <h2 class="text-4xl font-bold mb-4">CONTÁCTANOS</h2>
+        <p class="text-lg leading-relaxed">
+          Llena el siguiente formulario y pronto te brindaremos la información que necesitas.
+        </p>
+      </div>
+    </div>
+
+    <!-- Derecha: Formulario con padding interno -->
+    <form id="formContacto" action="/contacto" method="POST" class="bg-red-100 px-20 py-20 text-gray-800">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Nombres -->
+        <div>
+          <input name="nombres" placeholder="Nombres" required class="w-full p-2 rounded border border-gray-300 focus:outline-none focus:ring focus:border-[#7B081A]" />
+        </div>
+
+        <!-- Apellidos -->
+        <div>
+          <input name="apellidos" placeholder="Apellidos" required class="w-full p-2 rounded border border-gray-300 focus:outline-none focus:ring focus:border-[#7B081A]" />
+        </div>
+
+        <!-- Teléfono -->
+        <div>
+          <input name="telefono" placeholder="Teléfono" required class="w-full p-2 rounded border border-gray-300 focus:outline-none focus:ring focus:border-[#7B081A]" />
+        </div>
+
+        <!-- Correo -->
+        <div>
+          <input id="correo" name="correo" type="email" placeholder="Correo" required class="w-full p-2 rounded border border-gray-300 focus:outline-none focus:ring focus:border-[#7B081A]" />
+          <p id="errorCorreo" class="text-sm text-red-600 mt-1 hidden">Correo inválido</p>
+        </div>
+      </div>
+
+      <!-- Select -->
+      <div class="mt-4">
+        <select name="servicio" required class="w-full p-2 rounded border border-gray-300 text-gray-700 focus:outline-none focus:ring focus:border-[#7B081A]">
+          <option value="">Selecciona una opción</option>
+          <option value="more-plus">More Plus</option>
+          <option value="otro-servicio">Otro Servicio</option>
+        </select>
+      </div>
+
+      <!-- Consulta -->
+      <div class="mt-4">
+        <textarea name="consulta" placeholder="Consulta" rows="4" required class="w-full p-2 rounded border border-gray-300 focus:outline-none focus:ring focus:border-[#7B081A]"></textarea>
+      </div>
+
+      <!-- Botón de envío -->
+      <div class="flex items-center gap-4 mt-4">
+        <button id="btnEnviar" type="submit" class="bg-[#7B081A] text-white font-bold px-6 py-2 rounded hover:bg-red-900">
+          ENVIAR
+        </button>
+        <p id="estadoEnvio" class="text-sm text-gray-700 hidden">Enviando...</p>
+      </div>
+    </form>
+  </div>
+</section>
+
 <script>
   const form = document.getElementById('formContacto');
   const correo = document.getElementById('correo');
@@ -53,4 +137,31 @@
     btnEnviar.disabled = true;
     estadoEnvio.classList.remove('hidden');
   });
+</script>
+
+<script>
+  const carousel = document.getElementById('carousel');
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  function startDrag(e) {
+    isDown = true;
+    carousel.classList.add('cursor-grabbing');
+    startX = e.pageX - carousel.offsetLeft;
+    scrollLeft = carousel.scrollLeft;
+  }
+
+  function stopDrag() {
+    isDown = false;
+    carousel.classList.remove('cursor-grabbing');
+  }
+
+  function onDrag(e) {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - carousel.offsetLeft;
+    const walk = (x - startX) * 1.5; // velocidad
+    carousel.scrollLeft = scrollLeft - walk;
+  }
 </script>
