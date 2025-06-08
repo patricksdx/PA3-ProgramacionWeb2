@@ -40,8 +40,8 @@ app.get("/contacto", (req, res) => {
     title: "Contacto",
   });
 });
-app.get("/lugares", (req, res) => {
-  res.render("lugares", {
+app.get("/servicios", (req, res) => {
+  res.render("servicios", {
     mensaje: "Welcome to jurassic world a",
     title: "Lugares",
   });
